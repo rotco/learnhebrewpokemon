@@ -84,7 +84,7 @@ export default function Board({ hero, removeHero }) {
               <img
                 onClick={() => {
                   console.log("current hero before remove", hero);
-                  removeHero(hero);
+                  removeHero();
                   //   init();
                 }}
                 src="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"

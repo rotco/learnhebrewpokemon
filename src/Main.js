@@ -6,7 +6,7 @@ export default function Main() {
   const [data, setData] = useState(require("./data.json"));
   const [hero, setHero] = useState(null);
   const { count } = useSelector((state) => state.counter);
-  const removeHero = useCallback((hero) => {
+  const removeHero = () => {
     console.log("remove hero");
     console.log("data",data);
     console.log("hero",hero)
@@ -14,7 +14,7 @@ export default function Main() {
       return(obj.id !== hero.id)
     }));
     setData(data.filter((obj) => obj.id !== hero.id));
-  },[]);
+  };
   useEffect(() => {
     console.log("main useeffect")
     const rand = Math.round(Math.random() * (data.length - 1));
