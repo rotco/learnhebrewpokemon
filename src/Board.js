@@ -10,11 +10,8 @@ export default function Board({ hero, removeHero }) {
   const { count } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("hero.hebrew.length=" + hero.hebrew.length);
-    console.log("hero.hebrew=" + hero.hebrew);
     setProgress([...Array(hero.hebrew.length)]);
     setProgressIndex(0);
-    console.log("shuffledLetters before assignment to temp", shuffledLetters);
     let tempShuffledLetters = [...Array(hero.hebrew.length)];
     hero.hebrew.split("").forEach((letter) => {
       while (true) {
@@ -31,8 +28,6 @@ export default function Board({ hero, removeHero }) {
     });
   }, [hero.hebrew]);
   const handleClickLetter = (ch) => {
-    console.log("Clicked", ch);
-    console.log("progressIndex", progressIndex);
     if (ch.value === hero.hebrew[progressIndex]) {
       let tempArray = progress;
       dispatch(increment());
@@ -83,11 +78,10 @@ export default function Board({ hero, removeHero }) {
             <div className="next">
               <img
                 onClick={() => {
-                  console.log("current hero before remove", hero);
                   removeHero();
-                  //   init();
                 }}
                 src="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"
+                alt="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"
                 height="200px"
               />
             </div>
