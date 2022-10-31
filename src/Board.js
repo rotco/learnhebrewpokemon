@@ -5,20 +5,18 @@ import { decrement, increment, incrementByAmount } from "./redux/counter";
 export default function Board({ hero, removeHero }) {
   const [progress, setProgress] = useState();
   const [progressIndex, setProgressIndex] = useState(0);
-  const [shuffledLetters, setShuffledLetters] = useState([
-    ...Array(hero.hebrew.length),
-  ]);
+  const [shuffledLetters, setShuffledLetters] = useState(null);
   const [completeBoard, setCompleteBoard] = useState(false);
   const { count } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  console.log("shuffledLetters", shuffledLetters);
   useEffect(() => {
     console.log("hero.hebrew.length=" + hero.hebrew.length);
     console.log("hero.hebrew=" + hero.hebrew);
-    setShuffledLetters([...Array(hero.hebrew.length)]);
     setProgress([...Array(hero.hebrew.length)]);
+    setProgressIndex(0);
+    console.log("shuffledLetters before assignment to temp", shuffledLetters);
+    let tempShuffledLetters = [...Array(hero.hebrew.length)];
     hero.hebrew.split("").forEach((letter) => {
-      let tempShuffledLetters = shuffledLetters;
       while (true) {
         const rand = Math.round(
           Math.random() * (hero.hebrew.split("").length - 1)
@@ -31,7 +29,7 @@ export default function Board({ hero, removeHero }) {
       setCompleteBoard(false);
       setShuffledLetters(tempShuffledLetters);
     });
-  }, [hero.hebrew, shuffledLetters]);
+  }, [hero.hebrew]);
   const handleClickLetter = (ch) => {
     console.log("Clicked", ch);
     console.log("progressIndex", progressIndex);
@@ -41,7 +39,7 @@ export default function Board({ hero, removeHero }) {
       tempArray[progressIndex] = ch.value;
       ch.completed = true;
       setProgress(tempArray);
-      if (hero.hebrew.length == progressIndex + 2) {
+      if (hero.hebrew.length === progressIndex + 1) {
         setCompleteBoard(true);
       }
       setProgressIndex(progressIndex + 1);
@@ -85,10 +83,11 @@ export default function Board({ hero, removeHero }) {
             <div className="next">
               <img
                 onClick={() => {
-                  removeHero();
+                  console.log("current hero before remove", hero);
+                  removeHero(hero);
                   //   init();
                 }}
-                src="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"
                 height="200px"
               />
             </div>
