@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "close",
+    "hebrew": "close",
+    "imageurl": "close.svg"
+  },
+  {
+    "id": 2,
+    "name": "done",
+    "hebrew": "done",
+    "imageurl": "done.svg"
+  },
+  {
+    "id": 3,
+    "name": "home",
+    "hebrew": "home",
+    "imageurl": "home.svg"
+  }
+]

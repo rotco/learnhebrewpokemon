@@ -80,8 +80,7 @@ export default function Board({ hero, removeHero }) {
                 onClick={() => {
                   removeHero();
                 }}
-                src="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"
-                alt="https://upload.wikimedia.org/wikipedia/commons/8/84/Gift_Flat_Icon_Vector_.svg"
+                src="gift.svg"
                 height="200px"
               />
             </div>

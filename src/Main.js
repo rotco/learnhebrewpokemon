@@ -33,12 +33,12 @@ export default function Main() {
       <Score count={count} />
       <div className="score">
         <span style={{ marginLeft: "10px" }}>{count}</span>
-        <span>s</span>
+        <span>נקודות</span>
       </div>
 
       {hero && (
         <div>
-          <img src={hero.imageurl} height="100"></img>
+          <img src={hero.imageurl} height="400"></img>
           <Board hero={hero} removeHero={removeHero} />
         </div>
       )}
